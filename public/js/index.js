@@ -34,7 +34,8 @@ window.onload = function() {
         
         $$("#draw").click(function(){
             canvas.isDrawingMode = true;
-            canvas.freeDrawingLineWidth = 5;
+            canvas.freeDrawingBrush.color = 'rgba(240,59,59, 0.5)';
+            canvas.freeDrawingLineWidth = 45;
             canvas.renderAll();
             console.log(canvas.renderAll());
             canvas.calcOffset();
@@ -171,9 +172,9 @@ window.onload = function() {
                     var mouse = canvas.getPointer(e.e);
 
                     canvas.add(new fabric.Line([startX, startY, mouse.x, mouse.y],{ 
-                        stroke: color, 
+                        stroke: 'rgba(240,59,59, 0.5)', 
                         fill: 'transparent',
-                        strokeWidth: 2 
+                        strokeWidth: 42 
                     }));
                     canvas.renderAll();
                     canvas.calcOffset(); 

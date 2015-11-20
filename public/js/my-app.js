@@ -22,6 +22,54 @@ var swiper = new Swiper('.swiper-container', {
 });
 //slide
 
+var mySwiper = myApp.swiper('.swiper-tab', {
+    pagination:'.swiper-pagination',
+    paginationClickable: true,
+    spaceBetween: 30,
+    onlyExternal: true
+});
+
+// chuyển tab
+$$(".tab_general").click(function(){
+    $$(".bggg .add_border").removeClass("add_border");
+    $$(this).addClass("add_border");
+    $$(".swiper-tab  .swiper-wrapper").css({"transition-duration" : "0ms", "transform" : "translate3d(0px, 0px, 0px)"});
+});
+
+$$(".tab_list").click(function(){
+    $$(".bggg .add_border").removeClass("add_border");
+    $$(this).addClass("add_border");
+    $$(".swiper-tab  .swiper-wrapper").css({"transition-duration" : "0ms", "transform" : "translate3d(-1177px, 0px, 0px)"});
+});
+
+$$(".tab_about").click(function(){
+    $$(".bggg .add_border").removeClass("add_border");
+    $$(this).addClass("add_border");
+    $$(".swiper-tab  .swiper-wrapper").css({"transition-duration" : "0ms", "transform" : "translate3d(-2354px, 0px, 0px)"});
+});
+
+//float action button
+
+$$(".button-floating").click(function() {
+    var $wrapper = $$("#wrapper");
+
+    if (!$wrapper.hasClass("button-floating-clicked"))
+    {
+        $wrapper.attr("class", "center");
+        $wrapper.toggleClass("button-floating-clicked-out");
+    }
+
+    $wrapper.toggleClass("button-floating-clicked");
+
+    $$(".button-sub").click(function() {
+        var color = $$(this).data("color");
+
+        $wrapper.attr("class", "center button-floating-clicked button-floating-clicked-out");
+        $wrapper.addClass("button-sub-" + color + "-clicked");
+    });
+});
+//float action button
+
 $$('#login').click(function () {
     alert('dá');
 });

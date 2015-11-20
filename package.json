@@ -19,6 +19,10 @@
     "express": "~4.13.3",
     "binaryjs": "~0.2.1",
     "mongodb": "~2.0.48",
-    "passport-google-oauth": "~0.2.0"
+    "passport-google-oauth": "~0.2.0",
+    "passport-google": "~0.3.0",
+    "connect": "~3.4.0",
+    "express-session": "~1.12.1",
+    "googleapis": "~2.1.6"
   }
 }
