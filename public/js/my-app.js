@@ -110,3 +110,34 @@ $$('.create_class').on('click', function () {
         });
     });
 });
+var links = [
+   {
+       "bgcolor":"red",
+       "icon":"+"
+   },
+   {
+       "url":"http://google.com",
+       "bgcolor":"red",
+       "color":"#fffff",
+       "icon":"<i data-option='1'  id='login_icon_kc' class='fa fa-phone'></i>"
+   },
+   {
+       "url":"#",
+       "bgcolor":"black",
+       "color":"white",
+       "icon":"<i data-option='2' class='fa fa-envelop'></i>"
+   },
+   {  
+       "url":"#",
+       "bgcolor":"black",
+       "color":"white",
+       "icon":"<i data-option='3' class='fa fa-music'></i>"
+   }
+]
+$('.kc_fab_wrapper').kc_fab(links);
+$('.sub_fab_btns_wrapper').on('click',function(e){
+     console.log("Do it");
+});
+function clickPopup(e){
+    console.log(e);
+}

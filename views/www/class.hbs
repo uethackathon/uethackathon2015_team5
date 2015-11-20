@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4285F4">
     <title>My App</title>
     <!-- Path to Framework7 Library CSS-->
     <link rel="stylesheet" href="css/framework7.material.min.css">
     <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="css/kc.fab.css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
@@ -46,7 +48,7 @@
       <!-- Your main view, should have "view-main" class-->
       <div class="view view-main">
         <!-- Top Navbar-->
-        <div class="navbar" style="background: transparent;">
+        <div class="navbar" style="background: transparent;webkit-box-shadow: none;box-shadow: none;">
           <div class="navbar-inner">
             <div class="left">
               <a href="#" data-panel="left" class="link icon-only open-panel bar-icon"><i class="fa fa-align-justify" style="color:#939398;"></i></a>
@@ -72,89 +74,148 @@
               <div class="bggg">
                 <div class="class_title">Project 3</div>
                 <div class="class_subtitle">IT4421</div>
-                <ul>
-                  <li class="tab_general add_border">Tổng quan</li>
-                  <li class="tab_list">Sinh Viên</li>
-                  <li class="tab_about"style="margin-right:0px;">Giới thiệu</li>
-                </ul>
+                <div class="subnavbar" style="margin-top: 83px;background: transparent;">
+                  <div class="buttons-row">
+                    <a href="#tab_tongquan" class="button tab-link active tab_tongquan">Tổng quan</a>
+                    <a href="#tab_sinhvien" class="button tab-link tab_sinhvien">Sinh viên</a>
+                    <a href="#tab_gioithieu" class="button tab-link tab_gioithieu">Giới thiệu</a>
+                  </div>
+                </div>
               </div>
-              <!-- Slider -->
-              <div class="swiper-container swiper-tab">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <h1>Slide 1</h1>
-                  </div>
+              <div class="pages navbar-through">
+                <div data-page="home" class="page with-subnavbar">
+                  <div class="page-content" style="background:#E8F0FE;overflow-y:hidden;">
+                    <div class="tabs">
+                      <div id="tab_tongquan" class="tab active">
+                        <div class="row" style="margin-top:30px;">
+                          <div class="col-20">
+                            <ul class="tongquan_ob">
+                              <li>
+                                <div class="room_status">
+                                  <span>Trạng thái</span>
+                                  <i class="fa fa-youtube-play fa-4x"></i>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="room_pass">
+                                  <span>Mã lớp</span>
+                                  <h1>123dasd</h1>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="room_video">
+                                  <span>Câu hỏi sinh viên</span>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="room_video">
+                                  <span>Video bài giảng</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="col-80">
+                            <ul class="tongquan_item">
+                              <li>
+                                <div class="item">
+                                  <div class="row" style="width:100%;background: #eee;height:40px;">
+                                    <div class="col-60 item_title">Bài tập</div>
+                                    <div class="col-40 deadline">29/07/2011</div>
+                                  </div>
+                                  <div class="row" style="width:100%;background: #fff;height:160px;">
+                                    <div class="col-100 item_quest" style="height:60px;">Làm thế nào để cho con voi vào tủ lạnh???</div>
+                                    <div class="col-100 item_des" style="height:100px;">Làm thế nào để cho con voi vào tủ lạnh???</div>
+                                    <button id="clickme" data-popup=".popup-about">Click me</button>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>   
+                      </div>
+                      <div id="tab_sinhvien" class="tab">      
+                        <div class="content-block searchbar-not-found">
+                          <div class="content-block-inner">Nothing found</div>
+                        </div>
 
-                  <div class="swiper-slide">
-                    <div class="content-block searchbar-not-found">
-                      <div class="content-block-inner">Nothing found</div>
+                        <div class="list-block list-block-search searchbar-found dssv">
+                          <ul class="container">
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Item 1</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li>
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Hoàng Thanh Tùng</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li>
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Item 1</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li>
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Item 1</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li> 
+                          </ul>
+                        </div>
+                      </div>
+                      <div id="tab_gioithieu" class="tab">
+                        <div class="content-block">
+                          <p>Etiam non interdum erat...</p>
+                          <p>Duis ac semper risus. Suspendisse...</p>
+                          <p>Etiam non interdum erat...</p>
+                          <p>Duis ac semper risus. Suspendisse...</p>
+                        </div>
+                      </div>
                     </div>
-
-                    <div class="list-block list-block-search searchbar-found dssv">
-                      <ul class="container">
-                        <li class="accordion-item swipeout">
-                          <div class="item-content swipeout-content">
-                            <div class="item-inner">
-                              <div class="item-title">Item 1</div>
-                              <div class="item-after"><i class="fa fa-envelope"></i></div>
-                            </div>
-                          </div>
-                          <div class="swipeout-actions-right">
-                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
-                          </div>
-                        </li>
-                        <li class="accordion-item swipeout">
-                          <div class="item-content swipeout-content">
-                            <div class="item-inner">
-                              <div class="badge">5</div>
-                              <div class="item-title">Hoàng Thanh Tùng</div>
-                              <div class="item-after"><i class="fa fa-envelope"></i></div>
-                            </div>
-                          </div>
-                          <div class="swipeout-actions-right">
-                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
-                          </div>
-                        </li>
-                        <li class="accordion-item swipeout">
-                          <div class="item-content swipeout-content">
-                            <div class="item-inner">
-                              <div class="item-title">Item 1</div>
-                              <div class="item-after"><i class="fa fa-envelope"></i></div>
-                            </div>
-                          </div>
-                          <div class="swipeout-actions-right">
-                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
-                          </div>
-                        </li>
-                        <li class="accordion-item swipeout">
-                          <div class="item-content swipeout-content">
-                            <div class="item-inner">
-                              <div class="item-title">Item 1</div>
-                              <div class="item-after"><i class="fa fa-envelope"></i></div>
-                            </div>
-                          </div>
-                          <div class="swipeout-actions-right">
-                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
-                          </div>
-                        </li> 
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <h1>Giới thiệu</h1>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
-      </div>
-    </div>
-    
+      </div>  
+      <div class="kc_fab_wrapper" ></div>
+      <div class="popup popup-about">
+          <div class="content-block">
+            <p>About</p>
+            <p><a href="#" class="close-popup">Close popup</a></p>
+            <p>Lorem ipsum dolor ...</p>
+          </div>
+       </div>
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Js chung và thiết lập slide-->
-    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kc.fab.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
   </body>
 </html>

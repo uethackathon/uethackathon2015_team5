@@ -114,7 +114,8 @@
               <div class="swiper-container">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <canvas id="canvas" width="800" height="450" style="border:1px solid #000000"></canvas>
+                    <canvas id="canvas" width="800" height="450" style="z-index: 1;position:absolute;top:0px;left:33%;right:100px"></canvas>
+                    <canvas id="the-canvas" width="800" height="450"  style="z-index: 0;position:absolute;top:0px;left:33%;right:100px"></canvas>
                   </div>
                   <div class="swiper-slide">Slide 2</div>
                   <div class="swiper-slide">Slide 3</div>
@@ -146,5 +147,10 @@
     <!-- Js vẽ canvas-->
     <script type="text/javascript" src="js/fabric.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <!--Js load pdf viewer  -->
+
+    <script type="text/javascript" src="js/pdf.js"></script>
+    <script type="text/javascript" src="js/pdf-viewer.js"></script>
+    
   </body>
 </html>

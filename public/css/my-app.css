@@ -76,7 +76,7 @@ ul li{
     align-items: center;
 }
 #canvas{
-    background-image: url('../img/bg1.jpg');
+ 
 }
 /*toolbar vẽ canvas*/
 #draw, #rect, #circle, #ellipse, #line, #clear, #remove, #text_input, #triangle, #er{
@@ -304,36 +304,89 @@ ul li{
     text-transform: uppercase;
     cursor: pointer;
 }
-.add_border{
-    border-bottom: solid .2rem #fff;
-}
 .bggg ul li:hover{
     color: #fff;
 }
-.swiper-tab{
-    width: 85%;
+.tab_gioithieu, .tab_sinhvien, .tab_tongquan{
+    color: #CFD6ED !important;
 }
-.swiper-tab .swiper-slide{
-    webkit-align-items: inherit;
-    align-items: inherit;
+.tab_gioithieu:hover, .tab_sinhvien:hover, .tab_tongquan:hover{
+    color: #fff !important;
 }
-.swiper-tab .swiper-slide h1{
-    margin-top: 10px;
-}
-.class_paginate{
-    top:30px;
-}
-.dssv, .dssv ul{
+.tongquan_ob li, .tongquan_item li{
     width: 100%;
+    float: none;
 }
-.dssv li{
-    width: 85%;
-    margin-left: 60px;
+.tongquan_ob li div{
+    height: 125px;
+    -webkit-box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 1.2rem;
+}
+.tongquan_item li .item{
+    height: 200px;
+    width: 80%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    border: .1rem solid rgba(0,0,0,0.12);
+    margin-bottom: 3.2rem;
+}    
+.room_pass, .room_status, .room_video{
+    padding-top: 20px;
+    cursor: pointer;
+}
+.room_status i{
+    color: #00AF02;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+.room_pass span, .room_status span, .room_video span{
+    padding-left: 20px;
+}
+.room_pass h1{
+    width: 100%;
+    text-align: center;
+}
+.tongquan_item .deadline{
+    padding-right: 10px;
+    text-align: end;
+    font-weight: 500;
+    line-height: 2.4rem;
+    color: rgba(0,0,0,0.87);
+}
+.tongquan_item .item_title{
+    padding-left: 20px;
+    font-size: 1.3rem;
+    padding-left: 20px;
+    font-weight: 500;
+    line-height: 2.4rem;
+    color: rgba(0,0,0,0.87);
+}
+.item_quest{
+    padding-left: 20px;
+    padding-top: 10px;
+    word-wrap: break-word;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 2rem;
+}
+.item_des{
+    padding-left: 20px;
+}
+.container li{
+    border: .1rem solid rgba(0,0,0,0.12);
+    background: #fff;
+    float: none;
     margin-bottom: 10px;
-    border-spacing: 2px;
-    border-color: grey;
-    background-color: #eee;
+}   
+.container li:hover{
     webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
-}
+    box-shadow: 0 3px 2px 0 rgba(0,0,0,0.22);
+} 
 /*css trang class.html*/

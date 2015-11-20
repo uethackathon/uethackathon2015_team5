@@ -6,7 +6,8 @@ var express = require('express'),
 	home = express(),
 	session=require('express-session'),
 	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-	passport = require('passport');
+	passport = require('passport'),
+	PDFReader = require(__dirname +'/public/js/reader.js').PDFReader;
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views/www');
 var expressHbs = require('express3-handlebars');
@@ -44,7 +45,7 @@ Passport authen
 passport.use(new GoogleStrategy({  
         clientID: "266817110876-a777fba8d0sj93snj0b4l17cqfqc8v71.apps.googleusercontent.com",
         clientSecret: "GzypQrXM0V2hq4rO-gTBUkHD",
-        callbackURL: "http://localhost:3000/auth/google/callback"
+        callbackURL: "http://bksoict.ddns.net:3000/auth/google/callback/"
     },
     function(accessToken, refreshToken, profile, done) {
      	console.log(profile);
@@ -63,7 +64,7 @@ passport.deserializeUser(function(id, done) {
 });
 //
 app.use(express.static('public'));
-app.get('/',function(req,res){
+app.get('/',ensureAuthenticated,function(req,res){
 	res.render("home");
 });
 app.get('/index',function(req,res){
@@ -81,6 +82,10 @@ app.get('/login',function(req,res){
 app.get('/group',function(req,res){
 	res.render('group');
 });
+app.get('/classroom',function(req,res){
+	res.render('class');
+});
+
 //Route for authentication
 app.get('/auth/google', passport.authenticate('google',  
     { scope: ['https://www.googleapis.com/auth/userinfo.profile',
@@ -91,8 +96,29 @@ app.get('/auth/google/callback', passport.authenticate('google',
     { successRedirect: '/', failureRedirect: '/login' }
 ));
 function ensureAuthenticated(req, res, next) {  
-    if (req.isAuthenticated()) { return next(); }
+    if (!req.isAuthenticated()) { return res.redirect('login'); }
+    else return next();
     res.sendStatus(401);
 }
-//End route
-
+//End route authentication
+//Route service convert pdf to jpeg
+app.get('/convert',function(req,res){
+	var pdfReader = new PDFReader(__dirname + '/public/CloudSim2010.pdf');
+	function errorDumper(err) {
+	  if (err) {
+	    console.log('something went wrong :/');
+	    throw err;
+	  }
+	}
+	pdfReader.on('error',function(){
+		res.send("error");
+	});
+	pdfReader.on('ready',function(pdf){
+	  // Render all pages.
+	    pdf.renderAll({
+		    output: function(pageNum) {
+		      return __dirname + '/public/page-' + pageNum + '.png';
+		    }
+		}, errorDumper);
+	});
+});
