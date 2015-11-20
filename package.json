@@ -16,8 +16,10 @@
     "url": "https://github.com/uethackathon05/uethackathon-uethackathon2015_team5/issues"
   },
   "dependencies": {
-    "express": "~4.13.3",
     "binaryjs": "~0.2.1",
+    "express": "~4.13.3",
+    "google-auth-library": "^0.9.7",
+    "googleapis": "^2.1.6",
     "mongodb": "~2.0.48",
     "passport-google-oauth": "~0.2.0"
   }
