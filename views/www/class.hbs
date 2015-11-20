@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal left-menu">
+      <div class="content-block account">
+        <span class="acc_name">Tunght</span>
+        <a href="#" class="acc_status">
+          <div class="button-round text-success"></div>
+          online
+        </a>
+      </div>
+      <div class="content-block class_list">
+        <i class="fa fa-university fa-2x"></i>
+        <div class="class_list_text">Danh sách lớp</div>
+      </div>
+      <div class="content-block class_list">
+        <i class="fa fa-calendar-minus-o fa-2x"></i>
+        <div class="class_list_text">Lịch giảng dạy</div>
+      </div>
+      <div class="content-block class_list">
+        <i class="fa fa-file fa-2x"></i>
+        <div class="class_list_text">Bài tập lớn</div>
+      </div>
+    </div>
+    
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar" style="background: transparent;">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" data-panel="left" class="link icon-only open-panel bar-icon"><i class="fa fa-align-justify" style="color:#939398;"></i></a>
+            </div>  
+            <!-- We have home navbar without left link-->
+            
+            <div class="right">
+              <!-- Search bar -->
+              <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                  <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+                </div><a href="#" class="searchbar-cancel"></a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div class="bggg">
+                <div class="class_title">Project 3</div>
+                <div class="class_subtitle">IT4421</div>
+                <ul>
+                  <li class="tab_general add_border">Tổng quan</li>
+                  <li class="tab_list">Sinh Viên</li>
+                  <li class="tab_about"style="margin-right:0px;">Giới thiệu</li>
+                </ul>
+              </div>
+              <!-- Slider -->
+              <div class="swiper-container swiper-tab">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <h1>Slide 1</h1>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="content-block searchbar-not-found">
+                      <div class="content-block-inner">Nothing found</div>
+                    </div>
+
+                    <div class="list-block list-block-search searchbar-found dssv">
+                      <ul class="container">
+                        <li class="accordion-item swipeout">
+                          <div class="item-content swipeout-content">
+                            <div class="item-inner">
+                              <div class="item-title">Item 1</div>
+                              <div class="item-after"><i class="fa fa-envelope"></i></div>
+                            </div>
+                          </div>
+                          <div class="swipeout-actions-right">
+                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                          </div>
+                        </li>
+                        <li class="accordion-item swipeout">
+                          <div class="item-content swipeout-content">
+                            <div class="item-inner">
+                              <div class="badge">5</div>
+                              <div class="item-title">Hoàng Thanh Tùng</div>
+                              <div class="item-after"><i class="fa fa-envelope"></i></div>
+                            </div>
+                          </div>
+                          <div class="swipeout-actions-right">
+                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                          </div>
+                        </li>
+                        <li class="accordion-item swipeout">
+                          <div class="item-content swipeout-content">
+                            <div class="item-inner">
+                              <div class="item-title">Item 1</div>
+                              <div class="item-after"><i class="fa fa-envelope"></i></div>
+                            </div>
+                          </div>
+                          <div class="swipeout-actions-right">
+                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                          </div>
+                        </li>
+                        <li class="accordion-item swipeout">
+                          <div class="item-content swipeout-content">
+                            <div class="item-inner">
+                              <div class="item-title">Item 1</div>
+                              <div class="item-after"><i class="fa fa-envelope"></i></div>
+                            </div>
+                          </div>
+                          <div class="swipeout-actions-right">
+                            <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                          </div>
+                        </li> 
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <h1>Giới thiệu</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Js chung và thiết lập slide-->
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>
