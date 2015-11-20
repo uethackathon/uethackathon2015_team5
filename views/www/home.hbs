@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal left-menu">
+      <div class="content-block account">
+        <span class="acc_name">Tunght</span>
+        <a href="#" class="acc_status">
+          <div class="button-round text-success"></div>
+          online
+        </a>
+      </div>
+      <div class="content-block class_list">
+        <i class="fa fa-university fa-2x"></i>
+        <div class="class_list_text">Danh sách lớp</div>
+      </div>
+      <div class="content-block class_list">
+        <i class="fa fa-calendar-minus-o fa-2x"></i>
+        <div class="class_list_text">Lịch giảng dạy</div>
+      </div>
+      <div class="content-block class_list">
+        <i class="fa fa-file fa-2x"></i>
+        <div class="class_list_text">Bài tập lớn</div>
+      </div>
+    </div>
+    
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" data-panel="left" class="link icon-only open-panel"><i class="fa fa-align-justify" style="color:#939398;"></i></a>
+            </div>  
+            <!-- We have home navbar without left link-->
+            <div class="center sliding">Awesome App</div>
+            <div class="right">
+              <button class="button button-round create_class">
+                <i class="fa fa-plus" style="color:#939398;"></i>
+              </button>
+              <!-- Search bar -->
+              <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                  <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+                </div><a href="#" class="searchbar-cancel">Cancel</a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <!-- This block will be displayed if nothing found -->
+              <div class="content-block searchbar-not-found">
+                <div class="content-block-inner">Nothing found</div>
+              </div>
+ 
+              <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+              <div class="list-block list-block-search searchbar-found col-90">
+                <ul class="container">
+                  <li class="item-content class row">
+                    <div class="class_bg">
+                      <div class="item-title class_name">Project 3</div>
+                      <div class="item-title class_id">It4410</div>
+                    </div>
+                    <div class="class_item">
+                      <i class="fa fa-folder-open" data-toggle="tooltip" title="Thư mục bài giảng"></i>
+                      <i class="fa fa-sticky-note"data-toggle="tooltip" title="Ghi chú"></i>
+                      <i class="fa fa-envelope"data-toggle="tooltip" title="Liên lạc với giáo viên"></i>
+                      <i class="fa fa-video-camera"data-toggle="tooltip" title="Video bài giảng"></i>
+                    </div>
+                  </li>
+
+                  <li class="item-content class row">
+                    <div class="class_bg">
+                      <div class="item-title class_name">Project 3</div>
+                      <div class="item-title class_id">It4410</div>
+                    </div>
+                    <div class="class_item">
+                      <i class="fa fa-folder-open" data-toggle="tooltip" title="Thư mục bài giảng"></i>
+                      <i class="fa fa-sticky-note"data-toggle="tooltip" title="Ghi chú"></i>
+                      <i class="fa fa-envelope"data-toggle="tooltip" title="Liên lạc với giáo viên"></i>
+                      <i class="fa fa-video-camera"data-toggle="tooltip" title="Video bài giảng"></i>
+                    </div>
+                  </li>
+
+                  <li class="item-content class row">
+                    <div class="class_bg">
+                      <div class="item-title class_name">Project 3</div>
+                      <div class="item-title class_id">It4410</div>
+                    </div>
+                    <div class="class_item">
+                      <i class="fa fa-folder-open" data-toggle="tooltip" title="Thư mục bài giảng"></i>
+                      <i class="fa fa-sticky-note"data-toggle="tooltip" title="Ghi chú"></i>
+                      <i class="fa fa-envelope"data-toggle="tooltip" title="Liên lạc với giáo viên"></i>
+                      <i class="fa fa-video-camera"data-toggle="tooltip" title="Video bài giảng"></i>
+                    </div>
+                  </li>
+
+                  <li class="item-content class row">
+                    <div class="class_bg">
+                      <div class="item-title class_name">Project 3</div>
+                      <div class="item-title class_id">It4410</div>
+                    </div>
+                    <div class="class_item">
+                      <i class="fa fa-folder-open" data-toggle="tooltip" title="Thư mục bài giảng"></i>
+                      <i class="fa fa-sticky-note"data-toggle="tooltip" title="Ghi chú"></i>
+                      <i class="fa fa-envelope"data-toggle="tooltip" title="Liên lạc với giáo viên"></i>
+                      <i class="fa fa-video-camera"data-toggle="tooltip" title="Video bài giảng"></i>
+                    </div>
+                  </li>
+
+                  <li class="item-content class row">
+                    <div class="class_bg">
+                      <div class="item-title class_name">Project 3</div>
+                      <div class="item-title class_id">It4410</div>
+                    </div>
+                    <div class="class_item">
+                      <i class="fa fa-folder-open" data-toggle="tooltip" title="Thư mục bài giảng"></i>
+                      <i class="fa fa-sticky-note"data-toggle="tooltip" title="Ghi chú"></i>
+                      <i class="fa fa-envelope"data-toggle="tooltip" title="Liên lạc với giáo viên"></i>
+                      <i class="fa fa-video-camera"data-toggle="tooltip" title="Video bài giảng"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Js chung và thiết lập slide-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>
