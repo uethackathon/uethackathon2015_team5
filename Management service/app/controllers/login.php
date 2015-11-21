@@ -2,14 +2,14 @@
 
 //Login site
 
-class LoginController extends Controller {
+class Login extends Controller {
 
     function __construct($title) {
         parent::__construct($title);
     }
    
-    public function loginSubmit($data) {        
-    	
+    public function index(){
+    	echo "hello";
     }
-
+   
 }

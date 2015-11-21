@@ -14,6 +14,12 @@ $route->add('/logout',function(){
 // Routing controller
 
 $route->add('/login','login');
+$route->add('/group','group');
+$route->add('/notification','notification');
+$route->add('/schedule','schedule');
+$route->add('/student','student');
+$route->add('/user_class','user_class');
+$route->add('/user','user');
 
 //
 $route->run();
