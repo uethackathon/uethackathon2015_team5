@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 
+ */
 class Group extends Controller {
 
     function __construct($title) {
@@ -20,10 +22,11 @@ class Group extends Controller {
      * @return [type]     [description]
      */
     function get($id){
-    	$data = $this->model->selectWhere("*","id = ".$id);
-    	echo json_encode($data);
-    }
-    /**
+    	$result = $model->selectWhere('*',"id = "."'$id'");
+    	if($result==null)
+    		echo json_encode('failed');
+    	echo json_encode($result);
+    }    /**
      * Store a newly created resource
      */
     function insert() {     	

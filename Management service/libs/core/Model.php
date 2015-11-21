@@ -1,5 +1,7 @@
 <?php
-//Base model
+/**
+ * Base Model Class
+ */
 class Model extends Database {
     protected $_model;
     protected $_table=null;

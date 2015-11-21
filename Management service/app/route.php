@@ -3,17 +3,14 @@
  * Routing system
  */
 $route = new Route();
-// User define function
-$route->add('/h',function(){
-    echo 'hey this is home page';
-});
-$route->add('/logout',function(){    
-    Session::destroy();
-    header('location: '.URL."home");
+
+$route->add('/',function(){
+    echo json_encode("BKSOICT SERVER SERVICE!");
 });
 // Routing controller
 
 $route->add('/login','login');
+$route->add('/logout','logout');
 $route->add('/group','group');
 $route->add('/notification','notification');
 $route->add('/schedule','schedule');

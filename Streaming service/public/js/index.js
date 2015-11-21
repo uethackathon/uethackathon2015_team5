@@ -1,6 +1,7 @@
 window.onload = function() {
 
     var canvas = new fabric.Canvas('canvas');
+
     canvas.setWidth($$('.swiper-wrapper').width());
     canvas.setHeight($$('.swiper-wrapper').height());
     canvas.calcOffset();
@@ -30,6 +31,7 @@ window.onload = function() {
                 }));
                
                 canvas.off('mouse:down');
+
                 canvas.renderAll();
                 canvas.calcOffset();
             });
@@ -52,8 +54,7 @@ window.onload = function() {
             canvas.observe('mouse:down', function(e) {
 
                 mouse_pos = canvas.getPointer(e.e);
-
-                canvas.add(new fabric.Rect({
+                var rectangle = new fabric.Rect({
                     left: mouse_pos.x,
                     top: mouse_pos.y,
                     width: 75,
@@ -62,8 +63,10 @@ window.onload = function() {
                     stroke: color,
                     strokeWidth: 3,
                     padding: 10
-                }));
-
+                });
+                canvas.add(rectangle);
+                console.log(canvas);
+                emitRectangle(JSON.stringify(canvas));
                 canvas.off('mouse:down');
             });
         });
@@ -174,7 +177,7 @@ window.onload = function() {
                 if(started) {
                     var mouse = canvas.getPointer(e.e);
 
-                    canvas.add(new fabric.Line([startX, startY, mouse.x, mouse.y],{ 
+                    canvas.add(new fabric.Line([startX, startY, mouse.x, startY],{ 
                         stroke: 'rgba(240,59,59, 0.5)', 
                         fill: 'transparent',
                         strokeWidth: 42 
@@ -277,6 +280,25 @@ window.onload = function() {
             this.previousSibling.innerHTML = this.value;
         });
 
+        canvas.on('text:changed', function(e) {
+            console.log('text:changed', e.target, e);
+        });
+
+        canvas.on('object:moving', function(e) {
+            console.log('object:moving', e.target, e);
+        });
+
+        canvas.on('object:rotating', function(e) {
+            console.log('object:rotating', e.target, e);
+        });
+
+        canvas.on('object:scaling', function(e) {
+            console.log('object:scaling', e.target, e);
+        });
+
+        canvas.on('mouse:down', function(e) {
+            console.log('mouse:down', e.target, e);
+        });
     canvas.calcOffset();
 
     document.onkeyup = function(e) {

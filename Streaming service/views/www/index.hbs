@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+ 
   </head>
   <body>
     <!-- Status bar overlay for fullscreen mode-->
@@ -113,19 +115,15 @@
               
               <!-- slide -->
               <div class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <canvas id="canvas" width="800" height="450" style="border:1px solid #000000"></canvas>
-                  </div>
-                  <div class="swiper-slide">Slide 2</div>
-                  <div class="swiper-slide">Slide 3</div>
-                  <div class="swiper-slide">Slide 4</div>
-                  <div class="swiper-slide">Slide 5</div>
-                  <div class="swiper-slide">Slide 6</div>
-                  <div class="swiper-slide">Slide 7</div>
-                  <div class="swiper-slide">Slide 8</div>
-                  <div class="swiper-slide">Slide 9</div>
-                  <div class="swiper-slide">Slide 10</div>
+                <div class="swiper-wrapper slide_canvas">
+             
+                  {{#listOfPDFs}}
+                    <div class='swiper-slide'>
+                      <canvas id='canvas-{{@index}}' style="background-image:'{{src}}'"  data-slide='{{@index}}' data-src='{{src}}'>
+                      </canvas>
+                    </div>
+                  {{/listOfPDFs}}
+                          
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
@@ -142,10 +140,22 @@
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Js chung và thiết lập slide-->
+    <script type="text/javascript" src="js/fabric.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script src="js/swiper.min.js"></script>
     <!-- Js vẽ canvas-->
-    <script type="text/javascript" src="js/fabric.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+       <!-- Socket io-->
+    <script type="text/javascript" src="js/socket_connect.js"></script>
+    // <script type="text/javascript">
+    //   var d = [];
+    //   $$.get("http://10.10.213.251:3000/slides/",function(data){
+    //     d = JSON.parse(data);
+    //     for (i = 0; i < d.length; i++) {
+    //     $$(".slide_canvas").append("<div class='swiper-slide'><canvas id='canvas' data-slide='"+ i +"'></canvas></div>");
+    //   };
+    //   },'json');
+    // </script>
+    <--! -->
   </body>
 </html>

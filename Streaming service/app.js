@@ -9,7 +9,7 @@ var express = require('express'),
 	passport = require('passport'),
 	PDFReader = require(__dirname+"/public/js/reader.js").PDFReader,
 	PDFImage = require("pdf-image").PDFImage;
-
+const hostname = '10.10.213.251:3000';
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 app.use(express.static(__dirname + '/public'));
@@ -63,11 +63,25 @@ passport.deserializeUser(function(id, done) {
 });
 //
 app.use(express.static('public'));
+app.use(function(req,res,next){
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.get('/',ensureAuthenticated,function(req,res){
 	res.render("home");
 });
-app.get('/index',function(req,res){
-	res.render("index");
+app.get('/stream',function(req,res){
+  var slideName = "CloudSim2010";
+  var name=hostname+"/slides/"+slideName+"/"+slideName;
+  var length = 25;
+  result = {listOfPDFs:[]};
+  for(var i = 0;i<length;i++)
+  {
+    var tempName = name+"-"+i+".png";
+    result.listOfPDFs.push({src:tempName});
+  }
+	res.render("index",result);
 });
 app.get('/btl',function(req,res){
 	res.render('btl');
@@ -104,11 +118,11 @@ function ensureAuthenticated(req, res, next) {
 app.get('/convert',function(req,res){
 
 	pdfName = "CloudSim2010";
-	pdfPath = __dirname+'/public/slides/CloudSim2010/CloudSim2010.pdf';
+	pdfPath = hostname+"/slides/CloudSim2010/CloudSim2010.pdf";
 	imagePath = __dirname+'/public/slides/'+pdfName+'page-0';
-    var pdfImage = new PDFImage(pdfPath);
-    var pdfReader = new PDFReader(pdfPath);
-    var allPage = 0;
+  var pdfImage = new PDFImage(pdfPath);
+  var pdfReader = new PDFReader(pdfPath);
+  var allPage = 0;
  	pdfReader.on('ready',function(pdf){
  		allPage = pdf.getPages();
  		for(var i = 0;i<allPage;i++){
@@ -122,14 +136,14 @@ app.get('/convert',function(req,res){
  	});
 });
 app.get('/slides',function(req,res){
-	var name="CloudSim2010/CloudSim2010-";
-	var length = 25;
-	result = [];
-	for(var i = 0;i<length;i++)
-	{
-		var tempName = name+i+".png";
-		result.push(tempName);
-	}
+var name="CloudSim2010/CloudSim2010-";
+  var length = 25;
+  result = {listOfPDFs:[]};
+  for(var i = 0;i<length;i++)
+  {
+    var tempName = name+i+".png";
+    result.listOfPDFs.push({src:tempName});
+  }
 	res.json(result);
 });
 /*
@@ -139,7 +153,7 @@ io.on('connection',function(socket){
 	console.log("Listen 3000");
 	socket.on('event',function(data){
 		console.log(data);
-		io.emit('event', data);
+		io.emit('event', socket.id);
 	});
 	console.log('a user connected');
  	socket.on('disconnect', function(){
@@ -150,6 +164,18 @@ io.on('connection',function(socket){
   	});
   	socket.on('update',function(data){
   		socket.broadcast.emit("update",data);
+  	});
+  	socket.on('rectangle',function(data){
+  		socket.broadcast.emit("rectangle",data);
+  	});
+  	socket.on('next',function(data,session){
+  		console.log(session+":"+data);
+  		socket.broadcast.emit("next",data);
+  	});
+  	socket.on('prev',function(data){
+  		console.log(data);
+  		console.log(session+":"+data);
+  		socket.broadcast.emit("prev",data);
   	});
 });
 var router = express.Router();
