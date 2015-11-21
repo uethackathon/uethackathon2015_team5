@@ -3,13 +3,15 @@ var myApp = new Framework7();
 
 // Export selectors engine
 var $$ = Dom7;
-
+//current index slide
+var index = 0;
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
     dynamicNavbar: true
 });
 
+var canvas;
 //slide
 var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
@@ -20,37 +22,25 @@ var swiper = new Swiper('.swiper-container', {
     prevButton: '.swiper-button-prev',
     spaceBetween: 30
 });
+swiper.nextClick = true;
+swiper.prevClick = true;
 
-swiper.on('slideChangeStart', function () {
-    console.log('slide change start 2');
-});
-
-var links = [
+swiper.on('onSlideNextStart', function () {
+    if(swiper.nextClick==true) 
     {
-        "bgcolor":"red",
-        "icon":"+"
-    },
-    {
-        "url":"#",
-        "bgcolor":"red",
-        "color":"#fffff",
-        "icon":"<i data-option='1' class='fa fa-phone'></i>"
-    },
-    {
-        "url":"#",
-        "bgcolor":"black",
-        "color":"white",
-        "icon":"<i data-option='2' class='fa fa-envelop'></i>"
-    },
-    {  
-        "url":"#",
-        "bgcolor":"black",
-        "color":"white",
-        "icon":"<i data-option='3' class='fa fa-music'></i>"
+        index++;
+        console.log('slide next at '+index);
+        emitNext(index);
     }
-]
-$('.kc_fab_wrapper').kc_fab(links);
-
+});
+swiper.on('onSlidePrevStart', function () {
+    if(swiper.prevClick==true) 
+    {
+        index--;
+        console.log('slide prev at '+index);
+        emitPrev(index);
+    }
+});
 // chuyển tab
 $(document).on('click', '.sub_fab_btn', function(){
     console.log("dsa");
