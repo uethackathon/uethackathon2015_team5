@@ -7,7 +7,8 @@ var express = require('express'),
 	session=require('express-session'),
 	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
 	passport = require('passport'),
-	PDFReader = require(__dirname +'/public/js/reader.js').PDFReader;
+	PDFReader = require(__dirname+"/public/js/reader.js").PDFReader,
+	PDFImage = require("pdf-image").PDFImage;
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views/www');
 var expressHbs = require('express3-handlebars');
@@ -103,22 +104,34 @@ function ensureAuthenticated(req, res, next) {
 //End route authentication
 //Route service convert pdf to jpeg
 app.get('/convert',function(req,res){
-	var pdfReader = new PDFReader(__dirname + '/public/CloudSim2010.pdf');
-	function errorDumper(err) {
-	  if (err) {
-	    console.log('something went wrong :/');
-	    throw err;
-	  }
-	}
-	pdfReader.on('error',function(){
-		res.send("error");
-	});
-	pdfReader.on('ready',function(pdf){
-	  // Render all pages.
-	    pdf.renderAll({
-		    output: function(pageNum) {
-		      return __dirname + '/public/page-' + pageNum + '.png';
-		    }
-		}, errorDumper);
-	});
+
+	pdfName = "CloudSim2010";
+	pdfPath = __dirname+'/public/slides/CloudSim2010/CloudSim2010.pdf';
+	imagePath = __dirname+'/public/slides/'+pdfName+'page-0';
+    var pdfImage = new PDFImage(pdfPath);
+    var pdfReader = new PDFReader(pdfPath);
+    var allPage = 0;
+ 	pdfReader.on('ready',function(pdf){
+ 		allPage = pdf.getPages();
+ 		for(var i = 0;i<allPage;i++){
+	 		pdfImage.convertPage(i).then(function (imagePath) {
+		      console.log("Done");
+		    }, function (err) {
+		      res.send(err, 500);
+		    });
+	 	}
+	 	res.json({result:true});
+ 	});
 });
+app.get('/slides',function(req,res){
+	var name="CloudSim2010/CloudSim2010-";
+	var length = 25;
+	result = [];
+	for(var i = 0;i<length;i++)
+	{
+		var tempName = name+i+".png";
+		result.push(tempName);
+	}
+	res.json(result);
+});
+

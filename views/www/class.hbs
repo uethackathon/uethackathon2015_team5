@@ -125,7 +125,6 @@
                                   <div class="row" style="width:100%;background: #fff;height:160px;">
                                     <div class="col-100 item_quest" style="height:60px;">Làm thế nào để cho con voi vào tủ lạnh???</div>
                                     <div class="col-100 item_des" style="height:100px;">Làm thế nào để cho con voi vào tủ lạnh???</div>
-                                    <button id="clickme" data-popup=".popup-about">Click me</button>
                                   </div>
                                 </div>
                               </li>
@@ -188,11 +187,24 @@
                         </div>
                       </div>
                       <div id="tab_gioithieu" class="tab">
-                        <div class="content-block">
-                          <p>Etiam non interdum erat...</p>
-                          <p>Duis ac semper risus. Suspendisse...</p>
-                          <p>Etiam non interdum erat...</p>
-                          <p>Duis ac semper risus. Suspendisse...</p>
+                        <div class="gt_container">
+                          <div class="row">
+                            <input type="text" placeholder="Tên môn">
+                            <input type="text" placeholder="Lời giới thiệu">
+                            <input type="text" placeholder="Tên giáo viên">
+                          </div>
+                          <a href="#" data-popup=".popup-calendar" class="open-popup">
+                            <div class="gt_api">
+                              <i class="fa fa-book fa-2x"></i>
+                              <span style="width:78%;">Lịch học</span>
+                            </div>
+                          </a>  
+                          <a href="#" data-popup=".popup-calendar" class="open-popup">
+                            <div class="gt_api">
+                              <i class="fa fa-book fa-2x"></i>
+                              <span style="width:78%;">Lịch học</span>
+                            </div>
+                          </a>  
                         </div>
                       </div>
                     </div>
@@ -204,13 +216,72 @@
         </div>
       </div>  
       <div class="kc_fab_wrapper" ></div>
-      <div class="popup popup-about">
-          <div class="content-block">
-            <p>About</p>
-            <p><a href="#" class="close-popup">Close popup</a></p>
-            <p>Lorem ipsum dolor ...</p>
+
+      <div class="popup tablet-fullscreen popup-calendar">
+        <div class="content-block">
+          <p class="close-popup">Close popup</p>
+        </div>
+        <div class="row no-gutter">
+          <div class="col-auto thu">
+            <h2>Thứ 2</h2>
+            <div class="list-block">
+              <ul>
+                <li class="event swipeout">
+                  <div class="swipeout-content item-content">
+                    <div>10h-12h</div>
+                  </div>
+                  <div class="swipeout-actions-right">
+                    <!-- Add this button and item will be deleted automatically -->
+                    <a href="#" class="swipeout-delete">Delete</a>
+                  </div>
+                </li>
+                <li class="event swipeout">
+                  <div class="swipeout-content item-content">10h-12h</div>
+                  <div class="swipeout-actions-right">
+                    <!-- Add this button and item will be deleted automatically -->
+                    <a href="#" class="swipeout-delete">Delete</a>
+                  </div>
+                </li>
+              </ul>
+            </div>    
           </div>
-       </div>
+          <div class="col-auto thu">
+            <h2>Thứ 3</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 4</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 5</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 6</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 7</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Js chung và thiết lập slide-->

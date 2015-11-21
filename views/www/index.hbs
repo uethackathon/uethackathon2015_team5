@@ -71,40 +71,39 @@
           <div data-page="index" class="page">
             <!-- Scrollable page content-->
             <div class="page-content">
-              <div class="list-block">
-                <ul>
-                  <li class="item-content">
+              <div class="list-block" style="width: 70%;margin-bottom: 10px;">
+                <ul class="row">
+                  <li class="item-content col-auto">
                     <div class="button" id="draw" data-toggle="tooltip" title="Bút vẽ"></div>
                   </li>
-                  <li class="item-content">
-                    <div class="button" id="rect" data-toggle="tooltip" title="Hình tứ giác"></div>
-                  </li>
-                  <li class="item-content">
-                    <div class="button" id="triangle" data-toggle="tooltip" title="Hình tam giác"></div>
-                  </li>
-                  <li class="item-content">
-                    <div class="button" id="circle" data-toggle="tooltip" title="Hình tròn"></div>
-                  </li>
-                  <li class="item-content">
-                    <div class="button" id="ellipse" data-toggle="tooltip" title="Hình bầu dục"></div>
-                  </li>
-                  <li class="item-content">
+                  <li class="item-content col-auto">
                     <div class="button" id="line" data-toggle="tooltip" title="Đường thẳng"></div>
                   </li>
-                  <li class="item-content">
+                  <li class="item-content col-auto">
+                    <div class="button" id="rect" data-toggle="tooltip" title="Hình tứ giác"></div>
+                  </li>
+                  <li class="item-content col-auto">
+                    <div class="button" id="triangle" data-toggle="tooltip" title="Hình tam giác"></div>
+                  </li>
+                  <li class="item-content col-auto">
+                    <div class="button" id="circle" data-toggle="tooltip" title="Hình tròn"></div>
+                  </li>
+                  <li class="item-content col-auto">
+                    <div class="button" id="ellipse" data-toggle="tooltip" title="Hình bầu dục"></div>
+                  </li>
+                  <li class="item-content col-auto">
+                    <div class="button" id="highlight" data-toggle="tooltip" title="Đánh dấu"></div>
+                  </li>
+                  <li class="item-content col-auto">
                     <input type="color" id="myColor" data-toggle="tooltip" title="Bảng màu" style="cursor:pointer;">
                   </li>
-                  <li class="item-content">
-                    <input type="range" value="5" min="5" max="60" id="drawing-line-width">
-                  </li>
-                  <li class="item-content">
+                  <li class="item-content col-auto">
                     <div id="text_input" class="button"></div>
-                    <input id="text" name="text" type="text" size="40" placeholder="Input here!"> 
                   </li>
-                  <li class="item-content">
+                  <li class="item-content col-auto">
                     <div class="button" id="clear"></div>
                   </li>
-                  <li class="item-content">
+                  <li class="item-content col-auto">
                     <div class="button" id="remove"></div>
                   </li>
                 </ul>
@@ -114,8 +113,7 @@
               <div class="swiper-container">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <canvas id="canvas" width="800" height="450" style="z-index: 1;position:absolute;top:0px;left:33%;right:100px"></canvas>
-                    <canvas id="the-canvas" width="800" height="450"  style="z-index: 0;position:absolute;top:0px;left:33%;right:100px"></canvas>
+                    <canvas id="canvas" width="800" height="450" style="border:1px solid #000000"></canvas>
                   </div>
                   <div class="swiper-slide">Slide 2</div>
                   <div class="swiper-slide">Slide 3</div>
@@ -147,10 +145,5 @@
     <!-- Js vẽ canvas-->
     <script type="text/javascript" src="js/fabric.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-    <!--Js load pdf viewer  -->
-
-    <script type="text/javascript" src="js/pdf.js"></script>
-    <script type="text/javascript" src="js/pdf-viewer.js"></script>
-    
   </body>
 </html>

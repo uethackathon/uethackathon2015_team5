@@ -20,32 +20,40 @@ var swiper = new Swiper('.swiper-container', {
     prevButton: '.swiper-button-prev',
     spaceBetween: 30
 });
-//slide
 
-var mySwiper = myApp.swiper('.swiper-tab', {
-    pagination:'.swiper-pagination',
-    paginationClickable: true,
-    spaceBetween: 30,
-    onlyExternal: true
+swiper.on('slideChangeStart', function () {
+    console.log('slide change start 2');
 });
+
+var links = [
+    {
+        "bgcolor":"red",
+        "icon":"+"
+    },
+    {
+        "url":"#",
+        "bgcolor":"red",
+        "color":"#fffff",
+        "icon":"<i data-option='1' class='fa fa-phone'></i>"
+    },
+    {
+        "url":"#",
+        "bgcolor":"black",
+        "color":"white",
+        "icon":"<i data-option='2' class='fa fa-envelop'></i>"
+    },
+    {  
+        "url":"#",
+        "bgcolor":"black",
+        "color":"white",
+        "icon":"<i data-option='3' class='fa fa-music'></i>"
+    }
+]
+$('.kc_fab_wrapper').kc_fab(links);
 
 // chuyển tab
-$$(".tab_general").click(function(){
-    $$(".bggg .add_border").removeClass("add_border");
-    $$(this).addClass("add_border");
-    $$(".swiper-tab  .swiper-wrapper").css({"transition-duration" : "0ms", "transform" : "translate3d(0px, 0px, 0px)"});
-});
-
-$$(".tab_list").click(function(){
-    $$(".bggg .add_border").removeClass("add_border");
-    $$(this).addClass("add_border");
-    $$(".swiper-tab  .swiper-wrapper").css({"transition-duration" : "0ms", "transform" : "translate3d(-1177px, 0px, 0px)"});
-});
-
-$$(".tab_about").click(function(){
-    $$(".bggg .add_border").removeClass("add_border");
-    $$(this).addClass("add_border");
-    $$(".swiper-tab  .swiper-wrapper").css({"transition-duration" : "0ms", "transform" : "translate3d(-2354px, 0px, 0px)"});
+$(document).on('click', '.sub_fab_btn', function(){
+    console.log("dsa");
 });
 
 //float action button
@@ -110,34 +118,3 @@ $$('.create_class').on('click', function () {
         });
     });
 });
-var links = [
-   {
-       "bgcolor":"red",
-       "icon":"+"
-   },
-   {
-       "url":"http://google.com",
-       "bgcolor":"red",
-       "color":"#fffff",
-       "icon":"<i data-option='1'  id='login_icon_kc' class='fa fa-phone'></i>"
-   },
-   {
-       "url":"#",
-       "bgcolor":"black",
-       "color":"white",
-       "icon":"<i data-option='2' class='fa fa-envelop'></i>"
-   },
-   {  
-       "url":"#",
-       "bgcolor":"black",
-       "color":"white",
-       "icon":"<i data-option='3' class='fa fa-music'></i>"
-   }
-]
-$('.kc_fab_wrapper').kc_fab(links);
-$('.sub_fab_btns_wrapper').on('click',function(e){
-     console.log("Do it");
-});
-function clickPopup(e){
-    console.log(e);
-}

@@ -50,7 +50,7 @@ PDFJS.FontLoader.bind = function nodeFontLoaderBind(pdf, fonts, callback) {
     }
 
     var fontName = font.loadedName;
-    var fontFile = 'temp/' + pdf._idx + '_' + fontName + '.ttf';
+    var fontFile = __dirname+'/temp/' + pdf._idx + '_' + fontName + '.ttf';
 
     // Temporary hack for loading the font. Write it to file such that a font
     // object can get created from it and use it on the context.
@@ -187,10 +187,7 @@ PDFReader.prototype.render = function(pageNum, opt, callback) {
       console.log('finished page: %d - write to file: %s', pageNum, file);
 
       var out = fs.createWriteStream(file);
-      var stream = canvas.createJPEGStream({
-	    bufsize : 2048,
-	    quality : 80
-	  });
+      var stream = canvas.createPNGStream();
       stream.on('data', function(chunk){
         out.write(chunk);
       });
@@ -231,7 +228,11 @@ PDFReader.prototype.renderAll = function(opt, callback) {
   next = next.bind(this);
   next();
 };
+PDFReader.prototype.getPages = function() {
 
+  var numPages = this.pdf.numPages;
+  return numPages;
+};
 PDFReader.prototype.getContent = function(pageNum, callback) {
   var pdf = this.pdf;
   if (!pdf) {

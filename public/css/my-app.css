@@ -32,7 +32,7 @@ ul li{
     background: none !important;
 }
 .list-block{
-    margin: 60px 0px;
+    margin: 60px auto;
 }
 .list-block ul{
     margin: 0px auto;
@@ -76,15 +76,15 @@ ul li{
     align-items: center;
 }
 #canvas{
- 
+    background-image: url('../img/bg1.jpg');
 }
 /*toolbar vẽ canvas*/
-#draw, #rect, #circle, #ellipse, #line, #clear, #remove, #text_input, #triangle, #er{
+#draw, #rect, #circle, #ellipse, #line, #highlight, #clear, #remove, #text_input, #triangle, #er{
     background-image: url('../img/icon-pencil.png');
     border: none;
     background-size: cover;
-    height:22px;
-    width:22px;
+    height:30px;
+    width:30px;
 }
 #draw:hover{
     border: none;
@@ -103,6 +103,9 @@ ul li{
 }
 #line{
     background-image: url('../img/icon-line.png');   
+}
+#highlight{
+    background-image: url('../img/icon-highlight.png');   
 }
 #remove, #er{
     background-image: url('../img/icon-eraser.png');   
@@ -389,4 +392,71 @@ ul li{
     webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
     box-shadow: 0 3px 2px 0 rgba(0,0,0,0.22);
 } 
+.gt_container{
+    width: 80%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    border: .1rem solid rgba(0,0,0,0.12);
+    margin-bottom: 3.2rem;
+    background: #fff;
+    margin: 20px auto;
+}
+.gt_container input{
+    height: 40px;
+    margin: 0 auto;
+    width: 95%;
+    margin-top: 10px;
+    border: none;
+
+}
+.gt_container input:focus{
+    border-bottom: .2rem solid #2a56c6;
+}
+.gt_container .fa-calendar-check-o, .gt_container .fa-book{
+    margin-left: 30px;
+    color: #767676;
+}
+.gt_api{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 /*css trang class.html*/
+/*css pop up calendar*/
+.popup-calendar .close-popup{
+    cursor: pointer;
+    text-align: end;
+    margin-right: 10px;
+}
+.popup-calendar .content-block{
+    margin: 10px 0;
+}
+.popup-calendar .list-block{
+    margin: 10px 0;
+    padding-left: 10px;
+}
+.popup-calendar .thu{
+    border-right: 1px solid black;
+    height: 200px; 
+}
+.thu h2{
+    width: 100%;
+    cursor: pointer;
+    color: #888888;
+    text-align: center;
+    margin: 0;
+}
+.thu .event{
+    width: 90%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px auto;
+    color: #fff; 
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 2rem;
+    height: 50px;
+    background: blue;
+}
+/*css pop up calendar*/
