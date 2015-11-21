@@ -68,4 +68,5 @@ create table session(
 id int(50) primary key auto_increment,
 id_token text,
 user_id text,
-date_created int(50));
+date_created int(50),
+expired_time int(50));

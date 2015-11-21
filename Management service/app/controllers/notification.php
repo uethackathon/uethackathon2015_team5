@@ -1,8 +1,20 @@
 <?php
+/**
+ * 
+ */
 class Notification extends Controller {
 
     function __construct($title) {
         parent::__construct($title);
+         $auth = new Authenticate();
+    	if($auth->checkLogin($user_id,$id_token)){
+    		Session::init();
+    		Session::set('id_token',$id_token);
+    		Session::set('user_id',$user_id);
+    	}else{
+    		echo json_encode('need login with google ID');
+    		exit;
+    	}
     }
    
      /**
@@ -19,8 +31,10 @@ class Notification extends Controller {
      * @return [type]     [description]
      */
     function get($id){
-    	$data = $this->model->selectWhere("*","id = ".$id);
-    	echo json_encode($data);
+    	$result = $model->selectWhere('*',"id = "."'$id'");
+    	if($result==null)
+    		echo json_encode('failed');
+    	echo json_encode($result);
     }
     /**
      * Store a newly created resource
