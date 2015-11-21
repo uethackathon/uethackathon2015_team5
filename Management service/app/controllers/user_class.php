@@ -1,6 +1,6 @@
 <?php
 
-class StudentGroupController extends Controller {
+class User_Class extends Controller {
 
     function __construct($title) {
         parent::__construct($title);
@@ -35,8 +35,9 @@ class StudentGroupController extends Controller {
      */
     function detroy($id) {        
         $where = "id = '$id'";
-        $this->model->delete($where);
-        echo "1";
+        if($this->model->delete($where)){
+        	echo json_encode(array("success",$id));
+        }                
     }
 
 }

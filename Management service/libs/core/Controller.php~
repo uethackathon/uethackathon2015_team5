@@ -3,7 +3,8 @@
 abstract class Controller {
 
     function __construct($title) {
-
+        $this->view = new View();
+        $this->view->title = $title;
     }       
     /**
      * 

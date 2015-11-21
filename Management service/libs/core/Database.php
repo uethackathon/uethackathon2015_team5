@@ -96,7 +96,7 @@ class Database extends PDO {
     public function delete($where){
         $table = $this->_table;
         $pquery = $this->prepare("DELETE FROM $table WHERE $where");
-        $pquery->execute();         
+        return $pquery->execute();         
     }
     public function getList($start,$num,$by){        
         $pquery = $this->prepare("SELECT * FROM $this->_table ORDER BY $by DESC LIMIT $num OFFSET $start");

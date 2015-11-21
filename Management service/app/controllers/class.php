@@ -1,15 +1,17 @@
 <?php
-class NotificationModel extends Model {
-    protected $_table = 'notification';
-    function __construct() {
-        parent::__construct();
+
+class Class extends Controller {
+
+    function __construct($title) {
+        parent::__construct($title);
     }
-     /**
+   
+    /**
      * Show all resource
      * @return [type] [description]
      */
     function index() {
-          $data = $this->select('*');
+          $data = $this->model->select('*');
           echo json_encode($data);
     }
     /**
@@ -24,7 +26,7 @@ class NotificationModel extends Model {
      * Store a newly created resource
      */
     function store($data) {        
-        $this->insert($data);
+        $this->model->insert($data);
         echo json_encode($data);        
     }    
     /**
@@ -33,7 +35,16 @@ class NotificationModel extends Model {
      */
     function detroy($id) {        
         $where = "id = '$id'";
-        $this->delete($where);
-        echo "1";
+        if($this->model->delete($where)){
+        	$r = new HttpRequest(URL.':'.USER_CLASS_MICS_PORT.'delete', HttpRequest::METH_POST);
+			$r->setOptions(array('cookies' => array('lang' => 'en')));
+			$r->addPostFields(array('data' => '{"class_id":'.$id'}'));		
+			try {
+			    echo $r->send()->getBody();
+			} catch (HttpException $ex) {
+			    echo $ex;
+			}
+        }                
     }
+
 }
