@@ -1,6 +1,9 @@
 window.onload = function() {
 
     var canvas = new fabric.Canvas('canvas');
+    canvas.setWidth($$('.swiper-wrapper').width());
+    canvas.setHeight($$('.swiper-wrapper').height());
+    canvas.calcOffset();
     var color = "#000000";
         $$("#text_input").click(function(){
 
@@ -17,15 +20,15 @@ window.onload = function() {
 
             canvas.observe('mouse:down', function(e) {
                 mouse_pos = canvas.getPointer(e.e);
-
-                canvas.add(new fabric.Text(text, {
+                canvas.add(new fabric.IText('Tap and Type', { 
                     fontFamily: 'Arial',
                     fontSize: 18,
                     left: mouse_pos.x,
                     top: mouse_pos.y,
                     textAlign: "left",
-                    fontWeight: 'bold'
+                    fontWeight: 'bold'  
                 }));
+               
                 canvas.off('mouse:down');
                 canvas.renderAll();
                 canvas.calcOffset();
@@ -34,7 +37,7 @@ window.onload = function() {
         
         $$("#draw").click(function(){
             canvas.isDrawingMode = true;
-            canvas.freeDrawingBrush.color = 'rgba(240,59,59, 0.5)';
+            canvas.freeDrawingBrush.color = color;
             canvas.freeDrawingLineWidth = 45;
             canvas.renderAll();
             console.log(canvas.renderAll());
@@ -134,7 +137,7 @@ window.onload = function() {
             });
         });
 
-        $$("#line").click(function(){
+        $$("#highlight").click(function(){
             canvas.isDrawingMode = false;
 
             if (canvas.getContext) {
@@ -175,6 +178,57 @@ window.onload = function() {
                         stroke: 'rgba(240,59,59, 0.5)', 
                         fill: 'transparent',
                         strokeWidth: 42 
+                    }));
+                    canvas.renderAll();
+                    canvas.calcOffset(); 
+
+                    started = false;
+                    canvas.off('mouse:up');
+                }   
+            }
+        });
+
+        $$("#line").click(function(){
+            canvas.isDrawingMode = false;
+
+            if (canvas.getContext) {
+                var context = canvas.getContext('2d');
+            }
+
+            canvas.observe('mouse:down', function(e) { mousedown(e); });
+            canvas.observe('mouse:move', function(e) { mousemove(e); });
+            canvas.observe('mouse:up', function(e) { mouseup(e); });
+
+            var started = false;
+            var startX = 0;
+            var startY = 0;
+
+            /* Mousedown */
+            function mousedown(e) {
+                var mouse = canvas.getPointer(e.e);
+                started = true;
+                startX = mouse.x;
+                startY = mouse.y;
+                canvas.off('mouse:down');
+            }
+
+            /* Mousemove */
+            function mousemove(e) {
+                if(!started) {
+                    return false;
+                }
+                canvas.off('mouse:move');
+            }
+
+            /* Mouseup */
+            function mouseup(e) {
+                if(started) {
+                    var mouse = canvas.getPointer(e.e);
+
+                    canvas.add(new fabric.Line([startX, startY, mouse.x, mouse.y],{ 
+                        stroke: 'rgba(240,59,59, 0.5)', 
+                        fill: 'transparent',
+                        strokeWidth: 5 
                     }));
                     canvas.renderAll();
                     canvas.calcOffset(); 
