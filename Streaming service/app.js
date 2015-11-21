@@ -9,6 +9,9 @@ var express = require('express'),
 	passport = require('passport'),
 	PDFReader = require(__dirname+"/public/js/reader.js").PDFReader,
 	PDFImage = require("pdf-image").PDFImage;
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views/www');
 var expressHbs = require('express3-handlebars');
@@ -35,11 +38,6 @@ app.use(function(req, res, next){
 app.engine('hbs', expressHbs({extname:'hbs'}));
 app.set('view engine', 'hbs');
 
-var router = express.Router();
-var fs = require('fs');
-var server = app.listen(3000,function(){
-	console.log("Listening");
-});
 /*
 Passport authen
 */
@@ -134,4 +132,29 @@ app.get('/slides',function(req,res){
 	}
 	res.json(result);
 });
-
+/*
+	Socket io connection
+*/
+io.on('connection',function(socket){
+	console.log("Listen 3000");
+	socket.on('event',function(data){
+		console.log(data);
+		io.emit('event', data);
+	});
+	console.log('a user connected');
+ 	socket.on('disconnect', function(){
+    	console.log('user disconnected');
+  	});
+  	socket.on('message',function(data){
+  		socket.broadcast.emit("message",data);
+  	});
+  	socket.on('update',function(data){
+  		socket.broadcast.emit("update",data);
+  	});
+});
+var router = express.Router();
+var fs = require('fs');
+var server = http.listen(3000,function(){
+	console.log("Listening");
+});
+//End socket connection
