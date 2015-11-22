@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4285F4">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body ng-app="Hackathon" ng-controller="classroomController">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal left-menu">
+      <div class="content-block account">
+        <span class="acc_name">Tunght</span>
+        <a href="#" class="acc_status">
+          <div class="button-round text-success"></div>
+          online
+        </a>
+      </div>
+      <a href="#home">
+      <div class="content-block class_list pointer">
+        <i class="fa fa-university fa-2x"></i>
+        <div class="class_list_text">
+            Danh sách lớp    
+        </div>
+      </div>
+      </a>
+      <div class="content-block class_list pointer">
+        <i class="fa fa-user fa-2x"></i>
+        <div class="class_list_text pointer">Lớp của tôi</div>
+      </div>
+      <div class="content-block class_list pointer">
+        <i class="fa fa-calendar-minus-o fa-2x"></i>
+        <div class="class_list_text">Lịch giảng dạy</div>
+      </div>
+      <div class="content-block class_list pointer">
+        <i class="fa fa-file fa-2x"></i>
+        <div class="class_list_text">
+        <a href="#assignment">Bài tập lớn</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="" data-panel="left" class="link icon-only open-panel"><i class="fa fa-align-justify" style="color:#939398;"></i></a>
+            </div>  
+            <!-- We have home navbar without left link-->
+            <div class="center sliding">Awesome App</div>
+            <div class="right">
+              <!-- Search bar -->
+              <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                  <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+                </div><a href="" class="searchbar-cancel"></a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <!-- This block will be displayed if nothing found -->
+              <div class="content-block searchbar-not-found">
+                <div class="content-block-inner">Nothing found</div>
+              </div>
+ 
+              <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+              <div class="list-block list-block-search searchbar-found col-90 list-class">
+                <ul>
+                 <li class="item-content class row" ng-repeat="class in classList">
+                    <div class="class_bg">
+                      <div class="item-title class_name"><a href="#class/{{class.id}}">{{class.name}}</a></div>
+                      <div class="item-title class_id">{{class.description}}</div>
+                    </div>
+                    <div class="class_item">
+                      <i class="fa fa-video-camera fa-2x"data-toggle="tooltip" title="Video bài giảng"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Js chung và thiết lập slide-->
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <!-- Js vẽ canvas-->
+    <script type="text/javascript" src="js/fabric.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    
+            <script src="bower_components/angular/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-route.js"></script>
+    <script src="js/services/classService.js"></script>
+    <script src="js/controller/classController.js"></script>
+    <script src="js/services/userService.js"></script>
+    <script src="js/controller/userController.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js">
+      </script>
+  </body>
+</html>

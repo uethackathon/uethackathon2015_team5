@@ -1,0 +1,538 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+i{
+    cursor: pointer;
+}
+ul{
+    list-style: none;
+}
+ul li{
+    float: left;
+}
+.bar-icon:hover i{
+    color: :#fff;
+}
+/*.navbar, .subnavbar, .toolbar{
+    background: transparent;
+}*/
+.button{
+    border: none;
+}
+.searchbar{
+    background: none !important;
+}
+.list-block{
+    margin: 60px auto;
+}
+.list-block ul{
+    margin: 0px auto;
+}
+.list-block .item-inner:after{
+    background: none;
+}
+.list-block ul:after, .list-block ul:before{
+    background: #fff;
+}
+.list-class{
+    margin: 80px auto;
+}
+.list-block .item-content{
+    align-items: flex-start;
+
+}
+.page>.navbar, .page>.toolbar, .view>.navbar, .view>.toolbar, .views>.navbar, .views>.toolbar{
+    webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+}
+.navbar-fixed .page-content, .navbar-through .page-content{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    background: #fff;
+}
+.swiper-container {
+    width: 100%;
+    height: 80%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+#canvas{
+    background-image: url('../img/bg1.jpg');
+}
+/*toolbar vẽ canvas*/
+#draw, #rect, #circle, #ellipse, #line, #highlight, #clear, #remove, #text_input, #triangle, #er{
+    background-image: url('../img/icon-pencil.png');
+    border: none;
+    background-size: cover;
+    height:30px;
+    width:30px;
+}
+#draw:hover{
+    border: none;
+}
+#rect{
+    background-image: url('../img/icon-rect.png');   
+}
+#triangle{
+    background-image: url('../img/icon-triangle.png');   
+}
+#circle{
+    background-image: url('../img/icon-circle.png');   
+}
+#ellipse{
+    background-image: url('../img/icon-oval.png');   
+}
+#line{
+    background-image: url('../img/icon-line.png');   
+}
+#highlight{
+    background-image: url('../img/icon-highlight.png');   
+}
+#remove, #er{
+    background-image: url('../img/icon-eraser.png');   
+}
+#text_input{
+    background-image: url('../img/icon-a.png');   
+}
+#clear{
+    background: #f2f2f2;  
+    border: 1px solid #007aff; 
+}
+/*toolbar vẽ canvas*/
+
+/*menu trái*/
+.left-menu{
+    background: #4D394B;
+}
+.left-menu i{
+    float: left;
+    margin-right: 5px;
+}
+.left-menu .account{
+    margin: 0px !important;
+    height: 55px;
+    border-bottom: .1rem solid rgba(0,0,0,0.12);
+    webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.22);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.22);
+}
+.class_list{
+    margin: 10px 0px!important;
+    padding-top: 17px;
+    height: 72px;
+}
+.class_list_text{
+    font-size: 1.3rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.left-menu .class_list:hover{
+    background: #3E313C;
+}
+.acc_name{
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 2rem!important;
+    margin-top: 1rem!important;
+    color: #fff;
+    cursor: pointer;
+}
+.acc_status{
+    color: #ab9ba9;
+    opacity: 1;
+    -webkit-transition: all .1s ease-out 0s;
+    -moz-transition: all .1s ease-out 0s;
+    transition: all .1s ease-out 0s;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.0625rem;
+    margin-top: .0625rem;
+    display: inline-block;
+    max-width: 100%;
+}
+.acc_status:hover{
+    color: #fff;
+}
+.text-success {
+    width: 10px;
+    height: 10px;
+    float: left;
+    border: none !important;
+    background: #38978D;
+    border-radius: 50%;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+/*menu trái*/
+
+/*listview danh sách lớp*/
+.searchbar-found ul{
+    width: 90%;
+}
+.searchbar-found .class{
+    -webkit-box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: .1rem solid rgba(0,0,0,0.12);
+    height: 12.8rem;
+    margin-bottom: 2.4rem;
+    margin-right: 1.4rem;
+    margin-left: 1.8rem;
+    position: relative;
+    text-align: left;
+    padding: 0px;
+    width: 20.5rem;
+}
+.class_bg{
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/bg1.jpg');
+    background-size: cover;
+}
+.class_name{
+    margin-top: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow: 0 2px rgba(0,0,0,0.11);
+    color: #fff;
+    padding-left: .8rem;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 2.8rem;
+    cursor: pointer;
+}
+.class_name:hover{
+    text-decoration: underline;
+}
+.class_id{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #fff;
+    cursor: pointer;
+    padding-left: .8rem;
+    line-height: 2rem;
+}
+.class_item{
+    width: 10%;
+    position: absolute;
+    bottom: 0px;
+    left: 88%;
+}
+.class_item i{
+    color: #767676;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.class_item i:hover{
+    color: #222222;
+}
+/*listview danh sách lớp*/
+
+/*popup tạo lớp học*/
+.popup-create{
+    display: none;
+    opacity: 0.4;
+    width: 40%;
+    height: 40%;
+    top:30%;
+    left: 29%;
+    position: absolute;
+}
+.list-block .row li{
+    padding-top: 10px;
+}
+.popup-create .content-block{
+    opacity: 1;
+        display: block;
+}
+/*popup tạo lớp học*/
+
+/*css trang class.html*/
+.bggg{
+    background-image: url('../img/bg1.jpg'); 
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+.bggg .class_title{
+    color: #fff;
+    text-align: center;
+    padding-top: 70px;
+    font-size: 48px;
+    font-weight: bold
+}
+.bggg .class_subtitle{
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.bggg ul{
+    width: 310px;
+    margin: -26px auto;
+}
+.bggg ul li{
+    color: #DBE0E6;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 7.9rem 1rem 0 0rem;
+    webkit-align-items: center;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.bggg ul li:hover{
+    color: #fff;
+}
+.tab_gioithieu, .tab_sinhvien, .tab_tongquan{
+    color: #CFD6ED !important;
+}
+.tab_gioithieu:hover, .tab_sinhvien:hover, .tab_tongquan:hover{
+    color: #fff !important;
+}
+.tongquan_ob li, .tongquan_item li{
+    width: 100%;
+    float: none;
+}
+.tongquan_ob li div{
+    height: 125px;
+    -webkit-box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 1.2rem;
+}
+.tongquan_item li .item{
+    height: 200px;
+    width: 80%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    border: .1rem solid rgba(0,0,0,0.12);
+    margin-bottom: 3.2rem;
+}    
+.room_pass, .room_status, .room_video{
+    padding-top: 20px;
+    cursor: pointer;
+}
+.room_status i{
+    color: #00AF02;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+.room_pass span, .room_status span, .room_video span{
+    padding-left: 20px;
+}
+.room_pass h1{
+    width: 100%;
+    text-align: center;
+}
+.tongquan_item .deadline{
+    padding-right: 10px;
+    text-align: end;
+    font-weight: 500;
+    line-height: 2.4rem;
+    color: rgba(0,0,0,0.87);
+}
+.tongquan_item .item_title{
+    padding-left: 20px;
+    font-size: 1.3rem;
+    padding-left: 20px;
+    font-weight: 500;
+    line-height: 2.4rem;
+    color: rgba(0,0,0,0.87);
+}
+.item_quest{
+    padding-left: 20px;
+    padding-top: 10px;
+    word-wrap: break-word;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 2rem;
+}
+.item_des{
+    padding-left: 20px;
+}
+.container li{
+    border: .1rem solid rgba(0,0,0,0.12);
+    background: #fff;
+    float: none;
+    margin-bottom: 10px;
+}   
+.container li:hover{
+    webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    box-shadow: 0 3px 2px 0 rgba(0,0,0,0.22);
+} 
+.gt_container{
+    width: 80%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.12);
+    border: .1rem solid rgba(0,0,0,0.12);
+    margin-bottom: 3.2rem;
+    background: #fff;
+    margin: 20px auto;
+}
+.gt_container input{
+    height: 40px;
+    margin: 0 auto;
+    width: 95%;
+    margin-top: 10px;
+    border: none;
+
+}
+.gt_container input:focus{
+    border-bottom: .2rem solid #2a56c6;
+}
+.gt_container .fa-calendar-check-o, .gt_container .fa-book{
+    margin-left: 30px;
+    color: #767676;
+}
+.gt_api{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/*css trang class.html*/
+/*css pop up calendar*/
+.popup-calendar .close-popup{
+    cursor: pointer;
+    text-align: end;
+    margin-right: 10px;
+}
+.popup-calendar .content-block{
+    margin: 10px 0;
+}
+.popup-calendar .list-block{
+    margin: 10px 0;
+    padding-left: 10px;
+}
+.popup-calendar .thu{
+    border-right: 1px solid black;
+    height: 200px; 
+}
+.thu h2{
+    width: 100%;
+    cursor: pointer;
+    color: #888888;
+    text-align: center;
+    margin: 0;
+}
+.thu .event{
+    width: 90%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px auto;
+    color: #fff; 
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 2rem;
+    height: 50px;
+    background: blue;
+}
+/*css pop up calendar*/
+.list-class li:hover{
+    -webkit-box-shadow: 0 .3rem .2rem rgba(0,0,0,0.12);
+    box-shadow: 0 .3rem .2rem rgba(0,0,0,0.12);
+}
+.submenu1{
+    bottom: 85px;
+    width: 45px;
+    height: 45px;
+    right: 22px;
+    display: none;
+}
+.submenu2{
+    bottom: 145px;
+    width: 45px;
+    height: 45px;
+    right: 22px;
+    display: none;
+}
+.submenu3{
+    bottom: 200px;
+    width: 45px;
+    height: 45px;
+    right: 22px;
+    display: none;
+}
+.submenu1 i, .submenu2 i, .submenu3 i{
+    top: 9px;
+    left: 9px;
+}
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.pointer {
+    cursor: pointer;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4285F4">
+    <title></title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="css/kc.fab.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body ng-app="Hackathon" ng-controller="classroomsController">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal left-menu">
+      <div class="content-block pointer account">
+        <span class="acc_name">Tunght, </span>
+        <a href="" class="acc_status">
+          <div class="button-round text-success"></div>
+          online
+        </a>
+      </div>
+      <div class="content-block class_list pointer">
+        <i class="fa fa-university fa-2x"></i>
+        <div class="class_list_text">
+          <a href="/">Danh sách lớp</a>
+        </div>
+      </div>
+      <div class="content-block class_list pointer">
+        <i class="fa fa-calendar-minus-o fa-2x"></i>
+        <div class="class_list_text">Lịch giảng dạy</div>
+      </div>
+      <div class="content-block class_list pointer">
+        <i class="fa fa-file fa-2x"></i>
+        <div class="class_list_text">
+          <a href="#assignment">
+          Bài tập lớn
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar" style="background: transparent;webkit-box-shadow: none;box-shadow: none;">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="" data-panel="left" class="link icon-only open-panel bar-icon"><i class="fa fa-align-justify" style="color:#939398;"></i></a>
+            </div>  
+            <!-- We have home navbar without left link-->
+            
+            <div class="right">
+              <!-- Search bar -->
+              <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                  <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+                </div><a href="" class="searchbar-cancel"></a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page navbar-fixed">
+            <!-- Floatin Action Button -->
+            <a href="" class="floating-button color-pink submenuu" onclick="menu_start()">
+              <i class="icon icon-plus"></i>
+            </a>
+            <a href="" class="floating-button color-pink submenu1">
+              <i class="icon icon-plus"></i>
+            </a>
+            <a href="" class="floating-button color-pink submenu2">
+              <i class="icon icon-plus"></i>
+            </a>
+            <a href="" class="floating-button color-pink submenu3">
+              <i class="icon icon-plus"></i>
+            </a>
+            <!-- Scrollable page content-->
+            <div class="page-content" id="#page-content" style="overflow-y: hidden;">
+              <div class="bggg">
+                <div class="class_title">{{classroomName}}</div>
+                <div class="class_subtitle">{{classId}}</div>
+                <div class="subnavbar" style="margin-top: 83px;background: transparent;">
+                  <div class="buttons-row">
+                    <a href="#class/1/tab_tongquan" id="tab_tongquan" class="button tab-link active tab_tongquan">Tổng quan</a>
+                    <a href="#class/1/tab_sinhvien" class="button tab-link tab_sinhvien">Sinh viên</a>
+                    <a href="#class/1/tab_gioithieu" class="button tab-link tab_gioithieu">Giới thiệu</a>
+                  </div>
+                </div>
+              </div>
+              <div class="pages navbar-through">
+                <div data-page="home" class="page with-subnavbar">
+                  <div class="page-content" style="background:#E8F0FE;overflow-y:hidden;">
+                    <div class="tabs">
+                      <div id="tab_tongquan" class="tab active">
+                        <div class="row" style="margin-top:30px;">
+                          <div class="col-20">
+                            <ul class="tongquan_ob">
+                              <li>
+                                <div class="room_status">
+                                  <span>Trạng thái</span>
+                                  <i class="fa fa-youtube-play fa-4x"></i>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="room_pass">
+                                  <span>Mã lớp</span>
+                                  <h1>{{classId}}</h1>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="room_video">
+                                  <span>Câu hỏi sinh viên</span>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="room_video">
+                                  <span>Video bài giảng</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="col-80">
+                            <ul class="tongquan_item">
+                              <li>
+                                <div class="item">
+                                  <div class="row" style="width:100%;background: #eee;height:40px;">
+                                    <div class="col-60 item_title">Bài tập</div>
+                                    <div class="col-40 deadline">29/07/2011</div>
+                                  </div>
+                                  <div class="row" style="width:100%;background: #fff;height:160px;">
+                                    <div class="col-100 item_quest" style="height:60px;">Làm thế nào để cho con voi vào tủ lạnh???</div>
+                                    <div class="col-100 item_des" style="height:100px;">Làm thế nào để cho con voi vào tủ lạnh???</div>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>   
+                      </div>
+                      <div id="tab_sinhvien" class="tab" >      
+                        <div class="content-block searchbar-not-found">
+                          <div class="content-block-inner">Nothing found</div>
+                        </div>
+
+                        <div class="list-block list-block-search searchbar-found dssv">
+                          <ul class="container">
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Item 1</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li>
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Hoàng Thanh Tùng</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li>
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Item 1</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li>
+                            <li class="accordion-item swipeout">
+                              <div class="item-content swipeout-content">
+                                <div class="item-inner">
+                                  <div class="item-title">Item 1</div>
+                                  <div class="item-after"><i class="fa fa-envelope"></i></div>
+                                </div>
+                              </div>
+                              <div class="swipeout-actions-right">
+                                <a href="#" class="swipeout-delete" data-confirm="Are you sure want to delete this item?" data-confirm-title="Delete?">Delete</a>
+                              </div>
+                            </li> 
+                          </ul>
+                        </div>
+                      </div>
+                      <div id="tab_gioithieu" class="tab" >
+                        <div class="gt_container">
+                          <div class="row">
+                            <input type="text" placeholder="Tên môn">
+                            <input type="text" placeholder="Lời giới thiệu">
+                            <input type="text" placeholder="Tên giáo viên">
+                          </div>
+                          <a href="#" data-popup=".popup-calendar" class="open-popup">
+                            <div class="gt_api">
+                              <i class="fa fa-book fa-2x"></i>
+                              <span style="width:78%;">Lịch học</span>
+                            </div>
+                          </a>  
+                          <a href="#" data-popup=".popup-calendar" class="open-popup">
+                            <div class="gt_api">
+                              <i class="fa fa-book fa-2x"></i>
+                              <span style="width:78%;">Lịch học</span>
+                            </div>
+                          </a>  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+
+      <div class="popup tablet-fullscreen popup-calendar">
+        <div class="content-block">
+          <p class="close-popup">Close popup</p>
+        </div>
+        <div class="row no-gutter">
+          <div class="col-auto thu">
+            <h2>Thứ 2</h2>
+            <div class="list-block">
+              <ul>
+                <li class="event swipeout">
+                  <div class="swipeout-content item-content">
+                    <div>10h-12h</div>
+                  </div>
+                  <div class="swipeout-actions-right">
+                    <!-- Add this button and item will be deleted automatically -->
+                    <a href="#" class="swipeout-delete">Delete</a>
+                  </div>
+                </li>
+                <li class="event swipeout">
+                  <div class="swipeout-content item-content">10h-12h</div>
+                  <div class="swipeout-actions-right">
+                    <!-- Add this button and item will be deleted automatically -->
+                    <a href="#" class="swipeout-delete">Delete</a>
+                  </div>
+                </li>
+              </ul>
+            </div>    
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 3</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 4</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 5</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 6</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto thu">
+            <h2>Thứ 7</h2>
+            <div class="list-block">
+              <ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    !-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Js chung và thiết lập slide-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <!-- Js vẽ canvas-->
+    <script type="text/javascript" src="js/fabric.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-route.js"></script>
+    <script src="js/services/classService.js"></script>
+    <script src="js/controller/classController.js"></script>
+    <script src="js/services/userService.js"></script>
+    <script src="js/controller/userController.js"></script>
+    <script type="text/javascript">
+    </script>
+
+  </body>

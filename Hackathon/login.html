@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="266817110876-a777fba8d0sj93snj0b4l17cqfqc8v71.apps.googleusercontent.com">
+</head>
+<body>
+  <div id="my-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
+  <script>
+
+    function onSuccess(googleUser) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://10.10.213.159/uet2/login');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = function() {
+		  console.log(xhr.responseText);
+      };
+      xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            window.location = "http://10.10.213.251/Hackathon/";
+        }
+    }; 
+      xhr.send('id_token=' + googleUser['po']['id_token'] +'& '+ 'user_id='+googleUser['zt']['wc']);	
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'https://www.googleapis.com/auth/plus.login',
+        'width': 200,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+</html>
