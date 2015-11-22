@@ -8,11 +8,11 @@ class Class_Room extends Controller {
 
     function __construct($title) {
         parent::__construct($title);
-        if(Session::get('logined')!==null){
-        	if(!Session::get('logined')){
-        		header('location: '.URL.'login');
-        	}        	
-        }
+        //if(Session::get('logined')!==null){
+        //	if(!Session::get('logined')){
+        //		header('location: '.URL.'login');
+        //	}        	
+        //}
     }
    
     /**
@@ -109,6 +109,10 @@ class Class_Room extends Controller {
 			}
         }                
     }
+    /**
+     * User join in class
+     * @return [type] [description]
+     */
     function join(){
     	if(!isset($_POST['submit'])){
      		echo json_encode("failed");

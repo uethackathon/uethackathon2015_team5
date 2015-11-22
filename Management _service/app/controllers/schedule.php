@@ -2,16 +2,13 @@
 /**
  * 
  */
-require __DIR__.'/../models/user_class_model.php';
-require __DIR__.'/../models/class_room_model.php';
-
-class User extends Controller {
+class Schedule extends Controller {
 
     function __construct($title) {
         parent::__construct($title); 
-        if(!Session::get('logined')){
-        	header('location: '.URL.'login');
-        }           
+        //if(!Session::get('logined')){
+        //	header('location: '.URL.'login');
+        //}      
     }
    
      /**
@@ -28,34 +25,10 @@ class User extends Controller {
      * @return [type]     [description]
      */
     function get($id){
-    	$result = $this->model->selectWhere('*',"id = ".$id);
-    	if(isset($result)){
-    		echo json_encode($result);
-    	}else{
+    	$result = $model->selectWhere('*',"id = "."'$id'");
+    	if($result==null)
     		echo json_encode('failed');
-    	}    	    	
-    }
-    /**
-     * Display class in which user attend. 
-     * @param  [String] $id [description]
-     * @return [type]     [description]
-     */
-    function getClass($user_id){
-    	$result = array();
-    	if(isset($user_id)){
-    			$model = new User_Class_Model();
-    			$class_id = $model->selectWhere(array('class_id'),"user_id = "."'$user_id'");
-    			if(isset($class_id)){
-    				$class_model = new Class_Room_Model();
-    				foreach ($class_id as $key => $value) {    		
-    					$record = $class_model->selectWhere('*',"id = ".$value['class_id']);
-    					array_push($result,$record[0]);	
-    			}
-    	}
-    	if(isset($result)){
-    		echo json_encode($result);
-    	}    	
-    	}    	    	    	
+    	echo json_encode($result);
     }
     /**
      * Store a newly created resource
@@ -66,9 +39,9 @@ class User extends Controller {
      		exit();
      	}
      	$data = array();
-     	$data['name'] = $_POST['name'];
-     	$data['email'] = $_POST['email'];
-     	$data['photo_url'] = $_POST['photo_url'];
+     	$data['title'] = $_POST['title'];
+     	$data['description'] = $_POST['description'];
+     	$data['exprire_date'] = $_POST['exprire_date'];
      	if(count($data)==0){
      		echo json_encode("failed");
      		exit();	
@@ -83,7 +56,7 @@ class User extends Controller {
     		echo json_encode("failed");
     	}       
 
-    }
+    }   
     /**
      * Update specific resource
      * @return [type] [description]
@@ -101,5 +74,4 @@ class User extends Controller {
         $this->model->delete($where);
         echo "1";
     }
-
 }

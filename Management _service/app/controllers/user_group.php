@@ -1,14 +1,12 @@
 <?php
-/**
- * 
- */
-class Group extends Controller {
 
+class User_Group extends Controller {
+	// id int(50) primary key auto_increment,student_id int(50),group_id int(50)
     function __construct($title) {
-        parent::__construct($title);
-         if(!Session::get('logined')){
-        	header('location: '.URL.'login');
-        }
+        parent::__construct($title); 
+        //if(!Session::get('logined')){
+        //	header('location: '.URL.'login');
+        //}      
     }
    
      /**
@@ -29,19 +27,18 @@ class Group extends Controller {
     	if($result==null)
     		echo json_encode('failed');
     	echo json_encode($result);
-    }    /**
+    }
+    /**
      * Store a newly created resource
      */
     function insert() {     	
      	if(!isset($_POST['submit'])){
      		echo json_encode("failed");
      		exit();
-     	}
-     	//id int(50) primary key,name text,description text,size int(3)
+     	}     
      	$data = array();
-     	$data['name'] = $_POST['name'];
-     	$data['description'] = $_POST['description'];
-     	$data['size'] = $_POST['size'];
+     	$data['user_id'] = $_POST['user_id'];
+     	$data['group_id'] = $_POST['group_id'];
      	if(count($data)==0){
      		echo json_encode("failed");
      		exit();	
@@ -69,7 +66,7 @@ class Group extends Controller {
      * Remove the specified resource 
      * @return [type] [description]
      */
-    function destroy($id) {        
+    function detroy($id) {        
         $where = "id = '$id'";
         $this->model->delete($where);
         echo "1";

@@ -6,9 +6,9 @@ class Notification extends Controller {
 
     function __construct($title) {
         parent::__construct($title);   
-        if(!Session::get('logined')){
-        	header('location: '.URL.'login');
-        }    
+        //if(!Session::get('logined')){
+        //	header('location: '.URL.'login');
+        //}    
     }
    
      /**

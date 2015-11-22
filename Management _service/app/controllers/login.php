@@ -29,13 +29,15 @@ class Login extends Controller {
 	    		Session::set('id_token',$id_token);
 	    		Session::set('user_id',$user_id);
 	    		Session::set('logined',true);
-	    		echo json_encode('login success');
+	    		echo json_encode('success');
+	    		exit;
 	    	}else{
     			echo json_encode('need login with google ID');
     			exit;
     		}    	
         }else{
     		echo json_encode('need login with google ID');
+    		exit;
     	}        	
    }
    /**
