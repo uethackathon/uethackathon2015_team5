@@ -1,12 +1,17 @@
 <?php
+/**
+ * 
+ */
+require __DIR__.'/../models/user_class_model.php';
+require __DIR__.'/../models/class_room_model.php';
 
-class User_Group extends Controller {
-	// id int(50) primary key auto_increment,student_id int(50),group_id int(50)
+class User extends Controller {
+
     function __construct($title) {
         parent::__construct($title); 
-        if(!Session::get('logined')){
-        	header('location: '.URL.'login');
-        }      
+        //if(!Session::get('logined')){
+        //	header('location: '.URL.'login');
+        //}           
     }
    
      /**
@@ -23,10 +28,34 @@ class User_Group extends Controller {
      * @return [type]     [description]
      */
     function get($id){
-    	$result = $model->selectWhere('*',"id = "."'$id'");
-    	if($result==null)
+    	$result = $this->model->selectWhere('*',"id = ".$id);
+    	if(isset($result)){
+    		echo json_encode($result);
+    	}else{
     		echo json_encode('failed');
-    	echo json_encode($result);
+    	}    	    	
+    }
+    /**
+     * Display class in which user attend. 
+     * @param  [String] $id [description]
+     * @return [type]     [description]
+     */
+    function getClass($user_id){
+    	$result = array();
+    	if(isset($user_id)){
+    			$model = new User_Class_Model();
+    			$class_id = $model->selectWhere(array('class_id'),"user_id = "."'$user_id'");
+    			if(isset($class_id)){
+    				$class_model = new Class_Room_Model();
+    				foreach ($class_id as $key => $value) {    		
+    					$record = $class_model->selectWhere('*',"id = ".$value['class_id']);
+    					array_push($result,$record[0]);	
+    			}
+    	}
+    	if(isset($result)){
+    		echo json_encode($result);
+    	}    	
+    	}    	    	    	
     }
     /**
      * Store a newly created resource
@@ -35,10 +64,11 @@ class User_Group extends Controller {
      	if(!isset($_POST['submit'])){
      		echo json_encode("failed");
      		exit();
-     	}     
+     	}
      	$data = array();
-     	$data['user_id'] = $_POST['user_id'];
-     	$data['group_id'] = $_POST['group_id'];
+     	$data['name'] = $_POST['name'];
+     	$data['email'] = $_POST['email'];
+     	$data['photo_url'] = $_POST['photo_url'];
      	if(count($data)==0){
      		echo json_encode("failed");
      		exit();	
@@ -53,7 +83,7 @@ class User_Group extends Controller {
     		echo json_encode("failed");
     	}       
 
-    }   
+    }
     /**
      * Update specific resource
      * @return [type] [description]
@@ -71,4 +101,5 @@ class User_Group extends Controller {
         $this->model->delete($where);
         echo "1";
     }
+
 }

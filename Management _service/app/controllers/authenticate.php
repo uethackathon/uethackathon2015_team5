@@ -17,10 +17,19 @@ class Authenticate {
     		return true;    	
     	}    		    	
     	if($this->checkAccountFromGoogle($user_id,$id_token)){
-    		$data = array('id'=>2,'id_token'=>$id_token,'user_id'=>$user_id,'date_created'=>time());    		    		    	
-    		if($models->insertRecord($data)){
-    			return true;
-    		}        	    		
+    		$user_id = $models->selectWhere('*',"user_id = "."'$user_id'");
+    		if(isset($user_id)){
+    			$id = $user_id[0]['user_id'];
+    			if($models->update(array('id_token'=>$id_token),"user_id = "."'$id'")>0){
+    				return true;	 			
+    			}    			
+    		}else{
+    			$data = array('id'=>2,'id_token'=>$id_token,'user_id'=>$user_id,'date_created'=>time());   
+
+    			if($models->insertRecord($data)){
+    				return true;
+    			}        	    			
+    		}    		    		
     	}    	
     	return false;
     }
@@ -54,10 +63,15 @@ class Authenticate {
     	if(!isset($result)){
     		return false;	
     	}    		
-    	if($result[0]['date_created']+3600>time()){
-    		return true;
-    	}    		
-    	return false;
+    	if($result[0]['id_token']==$id_token){
+    		if($result[0]['date_created']+3600>time()){
+    			return true;
+    		} else{
+    			return false;
+    		}   			
+    	}else{
+    		return false;
+    	}    	    
     }
 }
 

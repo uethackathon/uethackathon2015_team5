@@ -5,6 +5,7 @@ define('LIBS', "libs/");
 //database
 define('DB_TYPE','mysql');
 define('DB_HOST','localhost');
+define('DB_PORT','3308');
 define('DB_NAME','uet');
 define('DB_USER','huanpc');
 define('DB_PASS','12345678');
