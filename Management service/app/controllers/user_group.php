@@ -3,16 +3,10 @@
 class User_Group extends Controller {
 	// id int(50) primary key auto_increment,student_id int(50),group_id int(50)
     function __construct($title) {
-        parent::__construct($title);
-        $auth = new Authenticate();
-    	if($auth->checkLogin($user_id,$id_token)){
-    		Session::init();
-    		Session::set('id_token',$id_token);
-    		Session::set('user_id',$user_id);
-    	}else{
-    		echo json_encode('need login with google ID!');
-    		exit;
-    	}
+        parent::__construct($title); 
+        if(!Session::get('logined')){
+        	header('location: '.URL.'login');
+        }      
     }
    
      /**
@@ -38,15 +32,28 @@ class User_Group extends Controller {
      * Store a newly created resource
      */
     function insert() {     	
-    	$jsonData = $_POST['data'];          	
-    	$data = json_decode($jsonData);
+     	if(!isset($_POST['submit'])){
+     		echo json_encode("failed");
+     		exit();
+     	}     
+     	$data = array();
+     	$data['user_id'] = $_POST['user_id'];
+     	$data['group_id'] = $_POST['group_id'];
+     	if(count($data)==0){
+     		echo json_encode("failed");
+     		exit();	
+     	}
+    	$arrTemp = array();
+        foreach($data as $key=>$value){
+            $arrTemp[$key] =$key."="."'$value'"; 
+        }   
     	if($this->model->insert($data)){
     		echo json_encode(array("success",$data['id']));
     	}else{
     		echo json_encode("failed");
     	}       
 
-    }
+    }   
     /**
      * Update specific resource
      * @return [type] [description]

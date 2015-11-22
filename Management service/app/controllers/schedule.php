@@ -5,16 +5,10 @@
 class Schedule extends Controller {
 
     function __construct($title) {
-        parent::__construct($title);
-        $auth = new Authenticate();
-    	if($auth->checkLogin($user_id,$id_token)){
-    		Session::init();
-    		Session::set('id_token',$id_token);
-    		Session::set('user_id',$user_id);
-    	}else{
-    		echo json_encode('need login with google ID');
-    		exit;
-    	}
+        parent::__construct($title); 
+        if(!Session::get('logined')){
+        	header('location: '.URL.'login');
+        }      
     }
    
      /**
@@ -40,15 +34,29 @@ class Schedule extends Controller {
      * Store a newly created resource
      */
     function insert() {     	
-    	$jsonData = $_POST['data'];          	
-    	$data = json_decode($jsonData);
+     	if(!isset($_POST['submit'])){
+     		echo json_encode("failed");
+     		exit();
+     	}
+     	$data = array();
+     	$data['title'] = $_POST['title'];
+     	$data['description'] = $_POST['description'];
+     	$data['exprire_date'] = $_POST['exprire_date'];
+     	if(count($data)==0){
+     		echo json_encode("failed");
+     		exit();	
+     	}
+    	$arrTemp = array();
+        foreach($data as $key=>$value){
+            $arrTemp[$key] =$key."="."'$value'"; 
+        }   
     	if($this->model->insert($data)){
     		echo json_encode(array("success",$data['id']));
     	}else{
     		echo json_encode("failed");
     	}       
 
-    }
+    }   
     /**
      * Update specific resource
      * @return [type] [description]

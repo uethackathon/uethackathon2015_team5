@@ -6,6 +6,9 @@ class Group extends Controller {
 
     function __construct($title) {
         parent::__construct($title);
+         if(!Session::get('logined')){
+        	header('location: '.URL.'login');
+        }
     }
    
      /**
@@ -30,15 +33,30 @@ class Group extends Controller {
      * Store a newly created resource
      */
     function insert() {     	
-    	$jsonData = $_POST['data'];          	
-    	$data = json_decode($jsonData);
+     	if(!isset($_POST['submit'])){
+     		echo json_encode("failed");
+     		exit();
+     	}
+     	//id int(50) primary key,name text,description text,size int(3)
+     	$data = array();
+     	$data['name'] = $_POST['name'];
+     	$data['description'] = $_POST['description'];
+     	$data['size'] = $_POST['size'];
+     	if(count($data)==0){
+     		echo json_encode("failed");
+     		exit();	
+     	}
+    	$arrTemp = array();
+        foreach($data as $key=>$value){
+            $arrTemp[$key] =$key."="."'$value'"; 
+        }   
     	if($this->model->insert($data)){
     		echo json_encode(array("success",$data['id']));
     	}else{
     		echo json_encode("failed");
     	}       
 
-    }
+    }   
     /**
      * Update specific resource
      * @return [type] [description]
@@ -51,7 +69,7 @@ class Group extends Controller {
      * Remove the specified resource 
      * @return [type] [description]
      */
-    function detroy($id) {        
+    function destroy($id) {        
         $where = "id = '$id'";
         $this->model->delete($where);
         echo "1";

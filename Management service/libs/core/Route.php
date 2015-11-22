@@ -54,10 +54,11 @@ class Route {
      * This load if there is no GET parameter passed
      */
     private function _loadDefaultController() {        
-        require $this->_controllerPath.$this->_defaultFile;
-        $this->_controller= new Home('home');
-        $this->_controller->loadModel('home',$this->_modelPath);
-        $this->_controller->index();
+        //require $this->_controllerPath.$this->_defaultFile;
+        //$this->_controller= new Home('home');
+        //$this->_controller->loadModel('home',$this->_modelPath);
+        //$this->_controller->index();
+        echo json_encode('hello');
     }
 
     /**
@@ -145,9 +146,10 @@ class Route {
      * @return boolean
      */
     private function _error() {
-        require $this->_controllerPath.$this->_errorFile;
-        $this->_controller = new Error();
-        $this->_controller->index();
+        //require $this->_controllerPath.$this->_errorFile;
+        //$this->_controller = new Error();
+        //$this->_controller->index();
+        echo json_encode(['error'=>'404 Not Found!']);
         exit();
         return FALSE;
     }
