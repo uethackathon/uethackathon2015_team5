@@ -1,7 +1,7 @@
 <?php
 class User_Model extends Model {
 	//id int(50) primary key,name text,email text,photo_url text
-    protected $_table = 'users';
+    protected $_table = 'user';
     function __construct() {
         parent::__construct();
     }
@@ -10,8 +10,9 @@ class User_Model extends Model {
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
-    function insert($data){    	    	
-    	$data['id'] = $this->lastInsertId();        
+    function insertRecord($data){    	      	
+    	$id = $models->selectWhere(array('id'),'1 order by id desc limit 1');
+    	$data['id'] = $id[0]['id'];	
         return $this->insert($data);       	
     }
 

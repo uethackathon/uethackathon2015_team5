@@ -79,7 +79,7 @@ class Database extends PDO {
         $pquery->setFetchMode(PDO::FETCH_ASSOC);
         $pquery->execute();
         $this->_result=$pquery;
-        return $pquery->fetch();
+        return $pquery->fetchAll();
     }
     /**
      * Get count

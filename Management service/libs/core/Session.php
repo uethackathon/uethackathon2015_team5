@@ -13,8 +13,11 @@ class Session {
     }
     public static function get($key){
         Session::init();
-        if(isset($_SESSION[$key]))
-            return $_SESSION[$key];
+        if(isset($_SESSION[$key])){
+        	return $_SESSION[$key];
+        }else{
+        	return "";
+        }            
     }
     public static function destroy(){
         Session::init();

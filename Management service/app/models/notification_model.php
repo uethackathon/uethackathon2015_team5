@@ -7,8 +7,9 @@ class Notification_Model extends Model {
         parent::__construct();
     }   
 
-    function insert($data){    	    	
-    	$data['id'] = $this->lastInsertId();        
+    function insertRecord($data){    	      	
+    	$id = $models->selectWhere(array('id'),'1 order by id desc limit 1');
+    	$data['id'] = $id[0]['id'];	
         return $this->insert($data);       	
     }
 }
